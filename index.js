@@ -4,7 +4,7 @@
 
 const mongoose = require("mongoose")
 const Document = require("./Document")
-const mongodb = "mongodb+srv://joyce:admin%40123@cluster0.fqwyn.mongodb.net/googledoc?retryWrites=true&w=majority";
+const mongodb = process.env.MONGO_DB || "mongodb+srv://joyce:admin%40123@cluster0.fqwyn.mongodb.net/googledoc?retryWrites=true&w=majority";
 
 mongoose.connect(mongodb, {
   useNewUrlParser: true,
