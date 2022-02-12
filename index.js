@@ -1,9 +1,10 @@
-// const app = require("express")();
+const express = require("express");
+const app = express();
 // const server = require("http").createServer(app);
 // const cors = require("cors");
 
-const mongoose = require("mongoose")
-const Document = require("./Document")
+const mongoose = require("mongoose");
+const Document = require("./Document");
 const mongodb = process.env.MONGODB_URL || "mongodb+srv://joyce:admin%40123@cluster0.fqwyn.mongodb.net/googledoc?retryWrites=true&w=majority";
 
 mongoose.connect(mongodb, {
@@ -53,3 +54,8 @@ async function findOrCreateDocument(id) {
   if (document) return document
   return await Document.create({ _id: id, data: defaultValue })
 }
+
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
+
